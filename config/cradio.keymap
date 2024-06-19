@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <behaviors.dtsi>
 #include "keymap_italian.h"
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
@@ -26,9 +26,7 @@
     // tapping_term_ms = <200>;
 };
 
-&sk {
-    ignore-modifiers;
-};
+&sk { ignore-modifiers; };
 
 / {
     macros {
@@ -51,7 +49,7 @@
         combo_accent {
             timeout-ms = <300>;
             key-positions = <32 33>;
-            bindings = <&mo ACCENT>;
+            bindings = <&mo 0>;
         };
 
         // internal-left & external-right thumb keys
@@ -59,7 +57,7 @@
         combo_sym2 {
             timeout-ms = <200>;
             key-positions = <31 33>;
-            bindings = <&mo SYM2>;
+            bindings = <&mo 0>;
         };
 
         // both left thumb keys
@@ -67,7 +65,7 @@
         combo_settings {
             timeout-ms = <300>;
             key-positions = <30 31>;
-            bindings = <&mo SETTINGS>;
+            bindings = <&mo 3>;
         };
     };
 
@@ -78,21 +76,21 @@
 
         default_layer {
             bindings = <
-&kp Q  &kp W  &kp E  &kp R    &kp T               &kp Z            &kp U                &kp I      &kp O    &kp P
-&kp A  &kp S  &kp D  &kp F    &kp G               &kp H            &kp J                &kp K      &kp L    &kp IT_OGRV
-&kp Y  &kp X  &kp C  &kp V    &kp B               &kp N            &kp M                &kp COMMA  &kp DOT  &kp IT_UGRV
-                     &mo EXT  &mt LSHIFT SPACE    &mt RCTRL SPACE  &mt RIGHT_ALT ENTER
+&kp Q  &kp W  &kp E  &kp R                   &kp T                   &kp Z                   &kp U                &kp I      &kp O    &kp P
+&kp A  &kp S  &kp D  &kp F                   &kp G                   &kp H                   &kp J                &kp K      &kp L    &kp RIGHT_SHIFT
+&kp Y  &kp X  &kp C  &kp V                   &kp B                   &kp N                   &kp M                &kp COMMA  &kp DOT  &kp IT_UGRV
+                     &mt LEFT_ALT BACKSPACE  &mt LEFT_COMMAND TAB    &mt LEFT_COMMAND SPACE  &mt RIGHT_ALT ENTER
             >;
         };
 
         // Numbers and high frequency symbols
 
-        sym_layer {
+        number_layer {
             bindings = <
-&kp N1        &kp N2       &kp N3       &kp N4       &kp N5         &kp N6      &kp N7       &kp N8        &kp N9        &kp N0
-&kp IT_LESS   &kp IT_USD   &kp IT_LPAR  &kp IT_LBRC  &kp IT_LBKT    &kp IT_EQL  &kp IT_QUES  &kp IT_SQUOT  &kp IT_MINUS  &kp IT_AST
-&kp IT_GREAT  &kp IT_PERC  &kp IT_RPAR  &kp IT_RBRC  &kp IT_RBKT    &kp IT_AT   &kp IT_EXCL  &kp IT_DQUOT  &kp IT_PLUS   &kp IT_FSLH
-                                        &mo FNC      &mo SYM2       &trans      &trans
+&none         &none         &kp N7        &kp NUMBER_8  &kp N9          &none       &none        &none         &none         &none
+&kp IT_LESS   &kp IT_USD    &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6    &kp IT_EQL  &kp IT_QUES  &kp IT_SQUOT  &kp IT_MINUS  &kp IT_AST
+&kp IT_GREAT  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &kp IT_AT   &kp IT_EXCL  &kp IT_DQUOT  &kp IT_PLUS   &kp IT_FSLH
+                                          &none         &none           &trans      &trans
             >;
         };
 
@@ -103,43 +101,13 @@
 &kp ESC    &trans     &trans      &trans     &trans       &kp PG_UP     &kp HOME  &kp UP    &kp END    &kp CAPS
 &sk LALT   &sk LGUI   &sk LSHIFT  &sk LCTRL  &kp RALT     &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL
 &kp LC(Z)  &kp LC(X)  &kp LC(C)   &kp TAB    &kp LC(V)    &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
-                                  &trans     &kp LCTRL    &kp ENTER     &mo FNC
+                                  &trans     &kp LCTRL    &kp ENTER     &mo 0
             >;
         };
 
         // Function keys with modifiers
-
-        fnc_layer {
-            bindings = <
-&kp F1    &kp F2    &kp F3      &kp F4     &kp F5      &kp F6   &kp F7   &kp F8           &kp F9  &kp F10
-&sk LALT  &sk LGUI  &sk LSHIFT  &sk LCTRL  &kp RALT    &kp F11  &kp F12  &kp PRINTSCREEN  &trans  &trans
-&none     &none     &none       &none      &none       &none    &none    &none            &none   &none
-                                &none      &none       &none    &none
-            >;
-        };
-
         // Low frequency symbols.
-
-        symbols_2_layer {
-            bindings = <
-&kp IT_CARET  &kp IT_UNDER  &kp IT_PND   &kp IT_EUR   &kp IT_HASH    &none  &none  &none  &none  &none
-&kp IT_BKTK   &kp IT_TILDE  &kp IT_BSLH  &kp IT_PIPE  &kp IT_AND     &none  &none  &none  &none  &none
-&none         &none         &kp IT_SECT  &kp IT_CCED  &kp IT_DEG     &none  &none  &none  &none  &none
-                                         &none        &none          &none  &none
-            >;
-        };
-
         // Used to type regional accents.
-
-        accent_layer {
-            bindings = <
-&none        &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &none
-&kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp IT_EGRV  &kp IT_EACU    &none  &none  &none  &none  &none
-&none        &none        &none        &kp IT_UGRV  &none          &none  &none  &none  &none  &none
-                                       &none        &none          &none  &none
-            >;
-        };
-
         // Used to change the keyboard's settings.
 
         settings_layer {
