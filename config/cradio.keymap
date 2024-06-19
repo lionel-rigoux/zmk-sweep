@@ -32,41 +32,14 @@
     macros {
         // sometimes my device thinks a modifier is being held down
         // pressing all modifiers fixes it.
-
-        unstick: unstick {
-            label = "ZM_unstick";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
-        };
     };
 
     combos {
         compatible = "zmk,combos";
 
         // both right thumb keys
-
-        combo_accent {
-            timeout-ms = <300>;
-            key-positions = <32 33>;
-            bindings = <&mo 0>;
-        };
-
         // internal-left & external-right thumb keys
-
-        combo_sym2 {
-            timeout-ms = <200>;
-            key-positions = <31 33>;
-            bindings = <&mo 0>;
-        };
-
         // both left thumb keys
-
-        combo_settings {
-            timeout-ms = <300>;
-            key-positions = <30 31>;
-            bindings = <&mo 3>;
-        };
     };
 
     keymap {
@@ -76,10 +49,10 @@
 
         default_layer {
             bindings = <
-  &kp Q  &kp W  &kp E  &kp R                   &kp T                   &kp Z                   &kp U                &kp I      &kp O    &kp P
-  &kp A  &kp S  &kp D  &kp F                   &kp G                   &kp H                   &kp J                &kp K      &kp L    &kp RIGHT_SHIFT
-  &kp Y  &kp X  &kp C  &kp V                   &kp B                   &kp N                   &kp M                &kp COMMA  &kp DOT  &kp IT_UGRV
-                       &mt LEFT_ALT BACKSPACE  &mt LEFT_COMMAND TAB    &mt LEFT_COMMAND SPACE  &mt RIGHT_ALT ENTER
+  &kp Q  &kp W    &kp E  &kp R                   &kp T                   &kp Z                   &kp U                &kp I      &kp O    &kp P
+  &kp A  &lt 1 S  &kp D  &kp F                   &kp G                   &kp H                   &kp J                &kp K      &kp L    &kp RIGHT_SHIFT
+  &kp Y  &kp X    &kp C  &kp V                   &kp B                   &kp N                   &kp M                &kp COMMA  &kp DOT  &kp IT_UGRV
+                         &mt LEFT_ALT BACKSPACE  &mt LEFT_COMMAND TAB    &mt LEFT_COMMAND SPACE  &mt RIGHT_ALT ENTER
             >;
         };
 
@@ -87,24 +60,14 @@
 
         number_layer {
             bindings = <
-  &none  &none         &kp N7        &kp NUMBER_8  &kp N9          &none   &none   &none  &none  &none
-  &none  &none         &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6    &none   &none   &none  &none  &none
-  &none  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3    &none   &none   &none  &none  &none
-                                     &trans        &trans          &trans  &trans
+  &none  &none  &none  &kp SLASH  &kp STAR    &kp N7  &kp N8  &kp N9  &none    &none
+  &none  &none  &none  &kp MINUS  &kp PLUS    &kp N4  &kp N5  &kp N6  &kp N0   &none
+  &none  &none  &none  &none      &kp DOT     &kp N1  &kp N2  &kp N3  &kp DOT  &none
+                       &trans     &trans      &trans  &trans
             >;
         };
 
         // Main modifiers and arrow keys
-
-        ext_layer {
-            bindings = <
-  &kp ESC    &trans     &trans      &trans     &trans       &kp PG_UP     &kp HOME  &kp UP    &kp END    &kp CAPS
-  &sk LALT   &sk LGUI   &sk LSHIFT  &sk LCTRL  &kp RALT     &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL
-  &kp LC(Z)  &kp LC(X)  &kp LC(C)   &kp TAB    &kp LC(V)    &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
-                                    &trans     &kp LCTRL    &kp ENTER     &mo 0
-            >;
-        };
-
         // Function keys with modifiers
         // Low frequency symbols.
         // Used to type regional accents.
@@ -112,9 +75,9 @@
 
         settings_layer {
             bindings = <
-  &bootloader  &none  &none  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 3  &none  &unstick  &none  &bootloader
-  &none        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
-  &none        &none  &none  &none       &bt BT_SEL 2    &bt BT_SEL 5  &none  &none     &none  &none
+  &bootloader  &none  &none  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 3  &none  &none  &none  &bootloader
+  &none        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none  &none  &none
+  &none        &none  &none  &none       &bt BT_SEL 2    &bt BT_SEL 5  &none  &none  &none  &none
                              &none       &none           &none         &none
             >;
         };
